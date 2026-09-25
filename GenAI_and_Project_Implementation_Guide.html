@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Devansh Jha – GenAI & Project Implementation Guide</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 900px; margin: 40px auto; padding: 0 20px; background: #f8f9fa; }
+    .card { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    h1 { color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px; font-size: 24pt; margin-top: 0; }
+    h2 { color: #004080; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 6px; margin-top: 30px; font-size: 16pt; }
+    h3 { color: #1a365d; margin-top: 20px; font-size: 13pt; }
+    code { background: #edf2f7; padding: 2px 6px; border-radius: 4px; font-family: "Courier New", Courier, monospace; font-size: 10pt; }
+    pre { background: #2d3748; color: #f7fafc; padding: 15px; border-radius: 6px; overflow-x: auto; font-family: "Courier New", Courier, monospace; font-size: 9.5pt; }
+    ul { margin-left: 20px; }
+    li { margin-bottom: 6px; }
+    blockquote { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 12px 16px; margin: 15px 0; font-size: 10pt; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #cbd5e0; padding: 10px; text-align: left; }
+    th { background: #edf2f7; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Devansh Jha — Data Engineering & GenAI Project Guide</h1>
+    <p><em>Use this guide to master the technical architecture, GenAI integration, and interview preparation for your resume.</em></p>
+
+    <h2>1. Core Project & Prudential Client Context</h2>
+    <p><strong>Client:</strong> Prudential Financial (Fortune 500 Insurance Leader)</p>
+    <p><strong>Program:</strong> Legacy Informatica PowerCenter to AWS Cloud Data Platform Modernization</p>
+    <p><strong>Overview:</strong> Modernized legacy on-premise Informatica jobs to cloud-native, serverless AWS pipelines using PySpark, AWS Glue, Step Functions, Lambda, Secrets Manager, Bedrock, S3, IBM Db2, and AWS Aurora/RDS.</p>
+
+    <h2>2. Enterprise ETL Modernization Architecture</h2>
+    <pre>
+[Inbound S3 Bucket] (Multi-vendor CSV, XLSX, ZIP, DAT)
+        │
+        ▼
+[AWS Glue Ingestion Job] (Config-driven JSON Schema Extraction)
+        │
+        ▼
+[AWS Step Functions Workflow]
+        ├─► Batch Generator (150 records / batch)
+        ├─► AWS Lambda API Layer (Invokes Claims REST API)
+        ├─► AWS Glue Claim Creation (Executes Db2/Aurora Stored Procedures)
+        └─► History Load & 4-Stage SNS Alerting Model
+    </pre>
+
+    <h2>3. Gen AI Implementations (AWS Bedrock + Python)</h2>
+    <h3>Implementation 1: AI Pipeline Failure Diagnostic Utility</h3>
+    <p><strong>Problem:</strong> Raw PySpark/Glue CloudWatch logs contain 500+ lines of Java/Python stack traces, slowing triage.</p>
+    <p><strong>Solution:</strong> EventBridge detects Glue job failure ➔ Lambda extracts log stream ➔ Lambda invokes <strong>AWS Bedrock (Claude model)</strong> ➔ Bedrock generates concise 3-bullet root-cause diagnosis ➔ Sent to Slack/Email via SNS.</p>
+    <blockquote>
+      🚨 <strong>Sample Alert:</strong><br>
+      • <strong>Root Cause:</strong> <code>SchemaMismatchException</code> — Column <code>incurral_date</code> format error.<br>
+      • <strong>Affected File:</strong> <code>s3://prudential-vendor-inbound/vendor_b/claims.csv</code><br>
+      • <strong>Action:</strong> Update JSON schema config for Vendor B.
+    </blockquote>
+
+    <h3>Implementation 2: LLM-Assisted Schema Mapping Utility</h3>
+    <p><strong>Problem:</strong> Vendor file headers change unexpectedly (e.g. <code>policy_no</code> ➔ <code>policy_number</code>).</p>
+    <p><strong>Solution:</strong> Lambda reads file header ➔ AWS Bedrock maps header columns to target Aurora/Db2 schema attributes ➔ Auto-generates candidate JSON extraction mapping config for developer review via Git PR.</p>
+
+    <h2>4. AWS Aurora & RDS Database Operations (GitHub Actions)</h2>
+    <p>Codified table DDL and schema migrations into Git. Merges to Dev/QA trigger <strong>GitHub Actions</strong> workflows to securely connect to AWS VPC and provision/update Aurora cluster and RDS tables automatically — zero manual AWS console edits required.</p>
+
+    <h2>5. PySpark Performance Optimization (30m ➔ 5m)</h2>
+    <ul>
+      <li><strong>Broadcast Joins:</strong> Eliminated shuffle overhead for small lookup tables.</li>
+      <li><strong>Partition Pruning:</strong> Partitioned S3 outputs by <code>year=YYYY/month=MM/day=DD</code>.</li>
+      <li><strong>Coalesce vs Repartition:</strong> Used <code>coalesce()</code> before S3 write to optimize file sizes.</li>
+      <li><strong>Result:</strong> Reduced runtime from ~30 mins to 5–6 mins (~80% reduction) and lowered AWS Glue DPU billing costs.</li>
+    </ul>
+
+    <h2>6. Top Interview Preparation Q&As</h2>
+    <h3>Q1: How did you use GenAI in your data pipelines?</h3>
+    <p><strong>Answer:</strong> "We integrated AWS Bedrock into our AWS observability and data ingestion workflows. For observability, we built a Lambda + Bedrock utility that parses raw Glue/PySpark error tracebacks and sends plain-English root-cause summaries via SNS. For ingestion, we built an LLM schema parser that analyzes dynamic vendor headers and auto-generates JSON mapping configs."</p>
+
+    <h3>Q2: How did you handle API batching & partial successes?</h3>
+    <p><strong>Answer:</strong> "Step Functions orchestrated Glue jobs that grouped staged records into batches of 150. Lambda invoked the Claims API for each batch, persisted responses to S3, and handled partial successes — committing valid claims to Db2/Aurora while storing invalid records with error codes for correction."</p>
+
+    <h3>Q3: How did you optimize PySpark job performance?</h3>
+    <p><strong>Answer:</strong> "We eliminated Spark shuffle bottlenecks using broadcast joins for lookup tables, optimized S3 write partitioning, tuned shuffle partitions, and used coalesce before writing files, reducing runtime from 30 minutes down to 5-6 minutes."</p>
+  </div>
+</body>
+</html>

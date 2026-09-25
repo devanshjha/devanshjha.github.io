@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Devansh Jha — Data Engineer & GenAI Specialist</title>
+  <meta name="description" content="Portfolio of Devansh Jha - Data Engineer & Programmer Analyst at Cognizant (Prudential Financial). AWS Glue, PySpark, Step Functions & AWS Bedrock GenAI.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Translucent Mobile-Optimized Navigation Header -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand">
+        <span class="brand-badge">&lt;DJ/&gt;</span>
+        <span class="brand-name">Devansh Jha</span>
+      </a>
+      
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">Overview</a>
+        <a href="#metrics" class="nav-link">Impact</a>
+        <a href="#architecture" class="nav-link">ETL Flow</a>
+        <a href="#genai" class="nav-link">GenAI Suite</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link nav-btn">Connect</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-row">
+            <span class="badge badge-glow"><i class="fa-solid fa-cloud-bolt"></i> AWS Data Engineer</span>
+            <span class="badge badge-subtle"><i class="fa-solid fa-brain"></i> GenAI Innovator</span>
+          </div>
+
+          <h1 class="hero-title">
+            Architecting <span class="gradient-text">Cloud Data Platforms</span> &amp; AI Diagnostics.
+          </h1>
+
+          <p class="hero-subtitle">
+            Data Engineer at <strong>Cognizant</strong> (Client: <strong>Prudential Financial</strong>). Modernizing legacy Informatica ETL to AWS PySpark, Step Functions, and integrating AWS Bedrock Claude 3 for automated pipeline observability.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#architecture" class="btn btn-primary">
+              Explore ETL Architecture <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <a href="../Devansh_Resume_A3_SinglePage.pdf" target="_blank" class="btn btn-secondary">
+              <i class="fa-solid fa-file-pdf"></i> Resume (PDF)
+            </a>
+            <a href="resume-web.html" target="_blank" class="btn btn-outline">
+              <i class="fa-solid fa-file-code"></i> Resume (Web)
+            </a>
+          </div>
+
+          <div class="quick-contacts">
+            <a href="mailto:devanshjha009@gmail.com"><i class="fa-solid fa-envelope"></i> devanshjha009@gmail.com</a>
+            <a href="tel:+917024045911"><i class="fa-solid fa-phone"></i> +91 70240-45911</a>
+            <a href="https://www.linkedin.com/in/devansh-jha-8384a8204/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Terminal Box (Fully Responsive) -->
+        <div class="hero-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">bash ~ devansh@aws-glue-pyspark</div>
+          </div>
+          <div class="terminal-body">
+            <div class="code-line"><span class="cmd-prompt">$</span> <span class="cmd-keyword">aws</span> glue get-job-run --job-name <span class="cmd-str">"prudential_claims_stage_load"</span></div>
+            <div class="code-output json-output">
+{
+  <span class="key">"Client"</span>: <span class="str">"Prudential Financial"</span>,
+  <span class="key">"Role"</span>: <span class="str">"Data Engineer"</span>,
+  <span class="key">"Status"</span>: <span class="str-success">"OPTIMIZED (30m -> 5.5m)"</span>,
+  <span class="key">"Config_Driven"</span>: <span class="num">true</span>,
+  <span class="key">"AI_Observability"</span>: <span class="str">"AWS Bedrock Active"</span>
+}
+            </div>
+            <div class="code-line"><span class="cmd-prompt">$</span> <span class="cmd-keyword">bedrock</span> diagnose-last-failure --sns-alert</div>
+            <div class="code-output alert-box">
+              <span class="alert-tag"><i class="fa-solid fa-bell"></i> AI DIAGNOSTIC SENT</span>
+              <p>Root Cause: Schema Mismatch auto-resolved via S3 JSON Config Engine.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics Impact Counter Section -->
+    <section class="metrics" id="metrics">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <div class="metric-value" data-target="82">82%</div>
+            <div class="metric-label">Runtime Reduction</div>
+            <div class="metric-sub">Optimized 30m to 5.5m</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div class="metric-value" data-target="4">4+</div>
+            <div class="metric-label">Legacy ETL Pipelines</div>
+            <div class="metric-sub">Informatica to AWS</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-cubes"></i></div>
+            <div class="metric-value" data-target="150">150</div>
+            <div class="metric-label">Records / Batch</div>
+            <div class="metric-sub">Step Functions & REST API</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="metric-value" data-target="100">100%</div>
+            <div class="metric-label">Zero-Code Onboarding</div>
+            <div class="metric-sub">Dynamic JSON Ingestion</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Overview Section -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">ENGINEERING PROFILE</span>
+          <h2 class="section-title">Big Data Engineering Meets Modern GenAI</h2>
+          <p class="section-desc">Pioneering cloud-native serverless ETL pipelines, automated LLM diagnostic tools, and scalable database architectures.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card card">
+            <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+            <h3>Cloud &amp; Big Data Engineering</h3>
+            <p>
+              3 years of experience at Cognizant modernizing mission-critical legacy ETL systems for Prudential Financial. Expert in PySpark, AWS Glue, Step Functions, S3, IBM Db2, and AWS Aurora.
+            </p>
+          </div>
+
+          <div class="about-card card">
+            <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h3>GenAI &amp; LLM Observability</h3>
+            <p>
+              Pioneered AWS Bedrock (Claude 3) integration for automated log analysis and schema auto-parsing. Converts 500+ line PySpark tracebacks into instant plain-English root-cause diagnoses sent via SNS.
+            </p>
+          </div>
+
+          <div class="about-card card">
+            <div class="card-icon"><i class="fa-solid fa-sliders"></i></div>
+            <h3>Performance Tuning &amp; Optimization</h3>
+            <p>
+              Specialized in resolving PySpark memory spills, data skew, dynamic partitioning, broadcast join optimizations, and cutting execution overhead on multi-gigabyte daily financial feeds.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Architecture Flow Section -->
+    <section class="architecture section" id="architecture">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">SYSTEM ARCHITECTURE</span>
+          <h2 class="section-title">Enterprise Claims ETL Pipeline Flow</h2>
+          <p class="section-desc">
+            Prudential Financial Data Platform Modernization: Multi-Vendor Ingestion, Step Functions Orchestration, REST API Batching & AI Diagnostics.
+          </p>
+        </div>
+
+        <div class="arch-viewer-wrapper card">
+          <div class="arch-controls-scroll">
+            <div class="arch-controls">
+              <button class="arch-tab active" data-stage="all">Full Architecture</button>
+              <button class="arch-tab" data-stage="s1">1. File Ingestion</button>
+              <button class="arch-tab" data-stage="s2">2. Dynamic Staging</button>
+              <button class="arch-tab" data-stage="s3">3. Step Functions &amp; API</button>
+              <button class="arch-tab" data-stage="s4">4. Db2 Persistence</button>
+              <button class="arch-tab" data-stage="s5">5. AI Observability &amp; CI/CD</button>
+            </div>
+          </div>
+
+          <div class="arch-diagram-container">
+            <svg class="arch-svg" viewBox="0 0 1100 620" preserveAspectRatio="xMidYMid meet">
+              <!-- Stage 1 Box -->
+              <g class="stage-group stage-s1" id="node-s1">
+                <rect x="20" y="30" width="320" height="230" rx="16" class="stage-rect"/>
+                <text x="35" y="60" class="stage-title">1. File Ingestion & Storage</text>
+                
+                <rect x="40" y="80" width="130" height="60" rx="10" class="node-box"/>
+                <text x="105" y="105" class="node-text text-center">On-Prem FMH</text>
+                <text x="105" y="125" class="node-sub text-center">(SFTP Schedule)</text>
+
+                <path d="M 170 110 L 210 110" class="flow-arrow"/>
+
+                <rect x="210" y="80" width="110" height="60" rx="10" class="node-box highlight-blue"/>
+                <text x="265" y="105" class="node-text text-center">S3 Inbound</text>
+                <text x="265" y="125" class="node-sub text-center">vendor_a/inbound</text>
+
+                <path d="M 265 140 L 265 170" class="flow-arrow"/>
+
+                <rect x="200" y="170" width="130" height="60" rx="10" class="node-box highlight-purple"/>
+                <text x="265" y="195" class="node-text text-center">Glue Job 1</text>
+                <text x="265" y="215" class="node-sub text-center">Ingestion & Move</text>
+              </g>
+
+              <!-- Stage 2 Box -->
+              <g class="stage-group stage-s2" id="node-s2">
+                <rect x="370" y="30" width="340" height="230" rx="16" class="stage-rect"/>
+                <text x="385" y="60" class="stage-title">2. Dynamic Staging & Config Mapping</text>
+
+                <rect x="390" y="80" width="140" height="60" rx="10" class="node-box"/>
+                <text x="460" y="105" class="node-text text-center">S3 Config Bucket</text>
+                <text x="460" y="125" class="node-sub text-center">configs/vendor_a.json</text>
+
+                <path d="M 330 200 L 370 200 L 370 110 L 390 110" class="flow-arrow"/>
+
+                <rect x="550" y="170" width="140" height="60" rx="10" class="node-box highlight-teal"/>
+                <text x="620" y="195" class="node-text text-center">Db2 / Aurora Staging</text>
+                <text x="620" y="215" class="node-sub text-center">STG_DISABILITY_CLAIMS</text>
+
+                <path d="M 330 200 L 550 200" class="flow-arrow"/>
+              </g>
+
+              <!-- Stage 3 Box -->
+              <g class="stage-group stage-s3" id="node-s3">
+                <rect x="740" y="30" width="340" height="270" rx="16" class="stage-rect"/>
+                <text x="755" y="60" class="stage-title">3. Step Functions & 150-Record Batch API</text>
+
+                <rect x="760" y="80" width="140" height="50" rx="10" class="node-box highlight-purple"/>
+                <text x="830" y="110" class="node-text text-center">Step Functions</text>
+
+                <path d="M 830 130 L 830 155" class="flow-arrow"/>
+
+                <rect x="760" y="155" width="140" height="50" rx="10" class="node-box"/>
+                <text x="830" y="180" class="node-text text-center">Glue Batch Generator</text>
+                <text x="830" y="195" class="node-sub text-center">150 recs / batch.json</text>
+
+                <path d="M 900 180 L 930 180" class="flow-arrow"/>
+
+                <rect x="930" y="155" width="130" height="50" rx="10" class="node-box highlight-amber"/>
+                <text x="995" y="180" class="node-text text-center">AWS Lambda API Caller</text>
+                <text x="995" y="195" class="node-sub text-center">POST Claims REST API</text>
+
+                <rect x="760" y="235" width="300" height="50" rx="10" class="node-box"/>
+                <text x="910" y="260" class="node-text text-center">S3 Response Persistence (batch_resp/)</text>
+                <text x="910" y="275" class="node-sub text-center">Partial Success & Failure arrays</text>
+              </g>
+
+              <!-- Connection S2 -> S3 -->
+              <path d="M 620 230 L 620 280 L 760 280" class="flow-arrow"/>
+
+              <!-- Stage 4 Box -->
+              <g class="stage-group stage-s4" id="node-s4">
+                <rect x="20" y="320" width="510" height="270" rx="16" class="stage-rect"/>
+                <text x="35" y="350" class="stage-title">4. Persistence & Db2 Stored Procedure Load</text>
+
+                <rect x="40" y="380" width="150" height="60" rx="10" class="node-box highlight-purple"/>
+                <text x="115" y="405" class="node-text text-center">Glue Job 3</text>
+                <text x="115" y="425" class="node-sub text-center">Claim Creation Script</text>
+
+                <path d="M 190 410 L 230 410" class="flow-arrow"/>
+
+                <rect x="230" y="380" width="140" height="60" rx="10" class="node-box highlight-teal"/>
+                <text x="300" y="405" class="node-text text-center">IBM Db2 SP</text>
+                <text x="300" y="425" class="node-sub text-center">SP_PROCESS_CLAIM</text>
+
+                <path d="M 370 410 L 410 410" class="flow-arrow"/>
+
+                <rect x="410" y="380" width="100" height="60" rx="10" class="node-box highlight-blue"/>
+                <text x="460" y="405" class="node-text text-center">Aurora DB</text>
+                <text x="460" y="425" class="node-sub text-center">DISABILITY_CLAIMS</text>
+
+                <rect x="40" y="480" width="470" height="80" rx="10" class="node-box"/>
+                <text x="275" y="515" class="node-text text-center">Idempotent History Archive (HIST_DISABILITY_CLAIMS)</text>
+                <text x="275" y="535" class="node-sub text-center">Automated move of processed S3 files & stage records</text>
+              </g>
+
+              <!-- Stage 5 Box -->
+              <g class="stage-group stage-s5" id="node-s5">
+                <rect x="560" y="320" width="520" height="270" rx="16" class="stage-rect"/>
+                <text x="575" y="350" class="stage-title">5. AI Bedrock Observability & Automated CI/CD</text>
+
+                <rect x="580" y="375" width="140" height="60" rx="10" class="node-box highlight-red"/>
+                <text x="650" y="400" class="node-text text-center">CloudWatch Alarm</text>
+                <text x="650" y="420" class="node-sub text-center">Glue Failure Trigger</text>
+
+                <path d="M 720 405 L 750 405" class="flow-arrow"/>
+
+                <rect x="750" y="375" width="140" height="60" rx="10" class="node-box highlight-purple"/>
+                <text x="820" y="400" class="node-text text-center">AWS Bedrock</text>
+                <text x="820" y="420" class="node-sub text-center">Claude 3 LLM Parser</text>
+
+                <path d="M 890 405 L 920 405" class="flow-arrow"/>
+
+                <rect x="920" y="375" width="140" height="60" rx="10" class="node-box highlight-amber"/>
+                <text x="990" y="400" class="node-text text-center">SNS Alerting</text>
+                <text x="990" y="420" class="node-sub text-center">Slack / Email Digest</text>
+
+                <rect x="580" y="465" width="480" height="95" rx="10" class="node-box highlight-teal"/>
+                <text x="820" y="495" class="node-text text-center">Flyway SQL DDL + GitHub Actions CI/CD</text>
+                <text x="820" y="515" class="node-sub text-center">Automated schema migrations to Dev & QA Aurora / RDS instances</text>
+                <text x="820" y="535" class="node-sub text-center">Bitbucket -> GitHub migration ownership</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="arch-details-box" id="arch-details">
+            <h4 id="arch-details-title"><i class="fa-solid fa-circle-info"></i> Interactive Architecture Guide</h4>
+            <p id="arch-details-text">Tap any stage pill above to inspect stage functionality and flow details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GenAI Suite Section -->
+    <section class="genai section" id="genai">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">AI INNOVATION</span>
+          <h2 class="section-title">AWS Bedrock &amp; LLM Innovations</h2>
+          <p class="section-desc">Pioneering generative AI applications for automated error diagnosis and dynamic schema resolution.</p>
+        </div>
+
+        <div class="genai-grid">
+          <!-- Case Study 1 -->
+          <div class="genai-card card">
+            <div class="genai-badge">FEATURE 01</div>
+            <h3>AWS Bedrock Log Diagnostic Utility</h3>
+            <p class="genai-problem">
+              <strong>Problem:</strong> When PySpark Glue jobs fail in production, CloudWatch produces 500+ lines of raw stack tracebacks (<code>Py4JJavaError</code>), taking 30+ minutes to triage manually.
+            </p>
+            <p class="genai-solution">
+              <strong>Solution:</strong> Lambda handler triggered by CloudWatch Alarms passes log tails to AWS Bedrock (Claude 3) with prompt engineering to return plain-English root-cause diagnoses directly via SNS.
+            </p>
+
+            <div class="demo-box">
+              <div class="demo-header">
+                <span><i class="fa-solid fa-terminal"></i> Live Bedrock Simulator</span>
+                <button class="btn-demo-run" id="run-demo-btn">Simulate AI Diagnostic</button>
+              </div>
+              <div class="demo-console" id="demo-console">
+                <div class="console-line text-muted">[CloudWatch Alarm] Triggered: Glue Job 'claim_stage_load' FAILED</div>
+                <div class="console-output-area" id="console-output">
+                  <span class="text-hint">Tap "Simulate AI Diagnostic" to run the LLM analyzer...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Study 2 -->
+          <div class="genai-card card">
+            <div class="genai-badge">FEATURE 02</div>
+            <h3>LLM Dynamic Schema Mapper</h3>
+            <p class="genai-problem">
+              <strong>Problem:</strong> Multi-vendor feeds alter headers or introduce new optional attributes, breaking rigid ETL schemas.
+            </p>
+            <p class="genai-solution">
+              <strong>Solution:</strong> Built a Python utility leveraging AWS Bedrock to inspect raw incoming file headers, map them against target Db2/Aurora tables, and auto-generate candidate JSON mapping configs.
+            </p>
+
+            <div class="code-preview">
+              <div class="code-preview-header">
+                <span>Generated JSON Config Output</span>
+                <span class="code-lang">JSON</span>
+              </div>
+              <pre><code>{
+  "vendor_id": "VENDOR_A",
+  "source_column": "policy_number",
+  "target_column": "POLICY_NO",
+  "transformation": "TRIM(UPPER(policy_number))",
+  "date_format": "yyyy-MM-dd"
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">PROJECT PORTFOLIO</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card card">
+            <div class="project-tag">Cloud Modernization</div>
+            <h3>Prudential Informatica $\rightarrow$ AWS Migration</h3>
+            <p class="project-summary">
+              Migrated 4+ core legacy Informatica ETL workloads to AWS Glue PySpark pipelines, S3, and Step Functions. Engineered parameter-driven multi-format ingestion (CSV, XLSX, ZIP, DAT) with JSON configs for zero-code onboarding.
+            </p>
+            <ul class="project-bullets">
+              <li>Batch generation of 150 records into S3 JSON request payloads.</li>
+              <li>Lambda REST API invocation with partial-success error handling.</li>
+              <li>Reworked legacy IBM Db2 Stored Procedures to run from Glue JDBC.</li>
+              <li>Cut runtime from 30 mins to 5.5 mins on high-volume datasets.</li>
+            </ul>
+            <div class="tech-stack-pills">
+              <span>AWS Glue</span>
+              <span>PySpark</span>
+              <span>Step Functions</span>
+              <span>Lambda</span>
+              <span>IBM Db2</span>
+              <span>Aurora</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card card">
+            <div class="project-tag">Data Quality & Reconciliation</div>
+            <h3>Data Validation Framework</h3>
+            <p class="project-summary">
+              Designed and implemented a reusable automated data quality framework ensuring 100% data fidelity between legacy source feeds and target Aurora/Db2 tables.
+            </p>
+            <ul class="project-bullets">
+              <li>Row-count reconciliation between source, stage, and target tables.</li>
+              <li>Null value detection, duplicate checks, and data type validation.</li>
+              <li>MD5 checksum-based payload integrity verification.</li>
+              <li>Automated SNS failure notifications with detailed validation reports.</li>
+            </ul>
+            <div class="tech-stack-pills">
+              <span>PySpark</span>
+              <span>Spark SQL</span>
+              <span>Amazon S3</span>
+              <span>Amazon SNS</span>
+              <span>Python</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card card">
+            <div class="project-tag">DevOps & Automation</div>
+            <h3>Database Operations & CI/CD Suite</h3>
+            <p class="project-summary">
+              Provisioned and maintained database table DDLs across AWS Aurora and RDS environments. Owned Bitbucket to GitHub migration and automated deployment pipelines.
+            </p>
+            <ul class="project-bullets">
+              <li>Flyway SQL DDL migrations integrated into GitHub Actions workflows.</li>
+              <li>AutoSys and CloudWatch Events for hands-free daily file schedules.</li>
+              <li>Python scripts for automated S3 cleanup and archival routines.</li>
+              <li>Production incident response & on-call support with zero data loss.</li>
+            </ul>
+            <div class="tech-stack-pills">
+              <span>GitHub Actions</span>
+              <span>Jenkins</span>
+              <span>Flyway</span>
+              <span>CloudWatch</span>
+              <span>AutoSys</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">COMPETENCIES</span>
+          <h2 class="section-title">Technical Expertise</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group card">
+            <div class="group-header">
+              <i class="fa-solid fa-cloud"></i>
+              <h3>Cloud &amp; Big Data</h3>
+            </div>
+            <div class="tags-cloud">
+              <span class="tag tag-highlight">AWS Glue</span>
+              <span class="tag tag-highlight">PySpark</span>
+              <span class="tag tag-highlight">Step Functions</span>
+              <span class="tag">Amazon S3</span>
+              <span class="tag">AWS Lambda</span>
+              <span class="tag">AWS Secrets Manager</span>
+              <span class="tag">AWS Aurora</span>
+              <span class="tag">AWS RDS</span>
+              <span class="tag">Amazon SNS</span>
+            </div>
+          </div>
+
+          <div class="skill-group card">
+            <div class="group-header">
+              <i class="fa-solid fa-brain"></i>
+              <h3>AI &amp; GenAI Integration</h3>
+            </div>
+            <div class="tags-cloud">
+              <span class="tag tag-highlight">AWS Bedrock (Claude 3)</span>
+              <span class="tag tag-highlight">RAG Architecture</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">LLM API Integration</span>
+              <span class="tag">AI Log Diagnostics</span>
+            </div>
+          </div>
+
+          <div class="skill-group card">
+            <div class="group-header">
+              <i class="fa-solid fa-code"></i>
+              <h3>Languages &amp; Databases</h3>
+            </div>
+            <div class="tags-cloud">
+              <span class="tag tag-highlight">Python</span>
+              <span class="tag tag-highlight">SQL</span>
+              <span class="tag tag-highlight">IBM Db2</span>
+              <span class="tag">PostgreSQL / Aurora</span>
+              <span class="tag">REST API Integration</span>
+              <span class="tag">JSON Mapping</span>
+            </div>
+          </div>
+
+          <div class="skill-group card">
+            <div class="group-header">
+              <i class="fa-solid fa-infinity"></i>
+              <h3>DevOps &amp; Tools</h3>
+            </div>
+            <div class="tags-cloud">
+              <span class="tag tag-highlight">GitHub Actions</span>
+              <span class="tag tag-highlight">Jenkins</span>
+              <span class="tag">Flyway SQL</span>
+              <span class="tag">CloudWatch</span>
+              <span class="tag">AutoSys</span>
+              <span class="tag">Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">CAREER HISTORY</span>
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Programmer Analyst</h3>
+                  <div class="company">Cognizant Technology Solutions — Noida, India</div>
+                  <div class="client">Client: Prudential Financial (Fortune 500 Insurance)</div>
+                </div>
+                <div class="duration">Sept 2024 – Present</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Led legacy Informatica to AWS ETL pipeline modernization handling multi-vendor file feeds (CSV, XLSX, ZIP, DAT).</li>
+                <li>Designed AWS Bedrock LLM log diagnostic framework reducing production incident triage time from 30m to instant alert.</li>
+                <li>Optimized PySpark jobs cutting execution duration from ~30 minutes down to 5.5 minutes.</li>
+                <li>Reworked IBM Db2 stored procedures for JDBC invocation within Glue ETL scripts.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content card">
+              <div class="timeline-header">
+                <div>
+                  <h3>Programmer Analyst Trainee</h3>
+                  <div class="company">Cognizant Technology Solutions — Noida, India</div>
+                  <div class="client">Client: Prudential Financial (Fortune 500 Insurance)</div>
+                </div>
+                <div class="duration">Sept 2023 – Sept 2024</div>
+              </div>
+              <ul class="experience-bullets">
+                <li>Developed parameter-driven Glue scripts and external JSON config readers for dynamic schema resolution.</li>
+                <li>Implemented Step Functions batching flow for 150-record REST API payload creation and Lambda invokers.</li>
+                <li>Built automated row-count and checksum reconciliation framework alerting via SNS.</li>
+                <li>Managed Bitbucket to GitHub migration and Flyway DB migration scripts in CI/CD pipelines.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Certifications Row -->
+        <div class="edu-cert-grid">
+          <div class="edu-card card">
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+            <div class="edu-item">
+              <div class="edu-title">Bachelor of Technology (B.Tech)</div>
+              <div class="edu-inst">Institute of Technology &amp; Management, Gwalior</div>
+              <div class="edu-meta">Aug 2019 – Jun 2023 | <strong>CGPA: 8.49</strong></div>
+            </div>
+          </div>
+
+          <div class="cert-card card">
+            <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
+            <ul class="cert-list">
+              <li>
+                <i class="fa-brands fa-aws cert-icon-aws"></i>
+                <div>
+                  <strong>AWS Certified Cloud Practitioner</strong>
+                  <span>Amazon Web Services (2025)</span>
+                </div>
+              </li>
+              <li>
+                <i class="fa-brands fa-microsoft cert-icon-ms"></i>
+                <div>
+                  <strong>Microsoft Certified: Azure Fundamentals (AZ-900)</strong>
+                  <span>Microsoft (2025)</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="contact-box card">
+          <div class="section-header text-center" style="margin-bottom: 30px;">
+            <span class="section-tag">CONNECT</span>
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-desc">Open to discussions regarding Data Engineering, AWS Cloud Architecture, and GenAI observability.</p>
+          </div>
+
+          <div class="contact-methods">
+            <a href="mailto:devanshjha009@gmail.com" class="contact-card">
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-text">
+                <span class="label">Email</span>
+                <span class="val">devanshjha009@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+917024045911" class="contact-card">
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-text">
+                <span class="label">Phone</span>
+                <span class="val">+91 70240-45911</span>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/devansh-jha-8384a8204/" target="_blank" class="contact-card">
+              <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+              <div class="contact-text">
+                <span class="label">LinkedIn</span>
+                <span class="val">Devansh Jha</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="resume-download-box">
+            <h4>Download Full Resume &amp; Technical Docs</h4>
+            <div class="btn-group">
+              <a href="../Devansh_Resume_A3_SinglePage.pdf" target="_blank" class="btn btn-primary">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF Resume
+              </a>
+              <a href="resume-web.html" target="_blank" class="btn btn-secondary">
+                <i class="fa-solid fa-file-code"></i> View Web Resume
+              </a>
+              <a href="architecture-doc.html" target="_blank" class="btn btn-outline">
+                <i class="fa-solid fa-sitemap"></i> View Architecture Doc
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2026 Devansh Jha. Responsive Data Platform Portfolio.</p>
+      <a href="#hero" class="back-to-top">Back to top <i class="fa-solid fa-chevron-up"></i></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

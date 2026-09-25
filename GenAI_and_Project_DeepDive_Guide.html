@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devansh Jha – Detailed Project Architecture & GenAI Guide</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1a202c;
+      background: #edf2f7;
+      margin: 0;
+      padding: 30px 15px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 45px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    h1 {
+      color: #003366;
+      font-size: 26pt;
+      border-bottom: 3px solid #003366;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+    .meta-box {
+      background: #ebf8ff;
+      border-left: 4px solid #3182ce;
+      padding: 15px;
+      margin-bottom: 30px;
+      border-radius: 0 6px 6px 0;
+    }
+    h2 {
+      color: #1a365d;
+      font-size: 18pt;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-top: 35px;
+    }
+    h3 {
+      color: #2b6cb0;
+      font-size: 14pt;
+      margin-top: 25px;
+    }
+    pre {
+      background: #1a202c;
+      color: #f7fafc;
+      padding: 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
+      font-size: 9.5pt;
+      line-height: 1.45;
+    }
+    code {
+      background: #edf2f7;
+      color: #c53030;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 10pt;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 10.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e0;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #ebf8ff;
+      color: #2c5282;
+      font-weight: bold;
+    }
+    blockquote {
+      background: #fffaf0;
+      border-left: 4px solid #dd6b20;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .qa-card {
+      background: #f7fafc;
+      border: 1px solid #e2e8f0;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .qa-q {
+      font-weight: bold;
+      color: #2c5282;
+      font-size: 11.5pt;
+      margin-bottom: 8px;
+    }
+    .qa-a {
+      color: #2d3748;
+      font-size: 10.5pt;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prudential Data Platform & GenAI Implementation Guide</h1>
+    <div class="meta-box">
+      <strong>Author:</strong> Devansh Jha | Data Engineer (Cognizant)<br>
+      <strong>Client:</strong> Prudential Financial (Fortune 500)<br>
+      <strong>Scope:</strong> Complete Technical Architecture, Data Flows, PySpark Logic, Batch REST API, Flyway CI/CD, AWS Bedrock AI Diagnostics & Interview Q&A.
+    </div>
+
+    <h2>1. End-to-End System Architecture</h2>
+    <pre>
+┌─────────────────────────┐
+│ FMH On-Prem Network Path│
+└────────────┬────────────┘
+             │ Daily Scheduled SFTP (AWS Transfer Family)
+             ▼
+┌─────────────────────────┐
+│ S3 Inbound Directory    │  s3://prudential-data-lake/&lt;vendor&gt;/inbound/
+└────────────┬────────────┘
+             │ Triggered Glue Ingestion Job (moves inbound -&gt; source)
+             ▼
+┌─────────────────────────┐
+│ PySpark Stage Load Job  │  Parses JSON config, validates schemas, loads Stage Tables
+└────────────┬────────────┘
+             │
+             ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│ AWS Step Functions State Machine Orchestrator                           │
+│                                                                        │
+│  ┌──────────────────────────────────────────────────────────────────┐  │
+│  │ 1. Batch Generation Glue Job (Groups 150 records -&gt; JSON in S3)  │  │
+│  └───────────────────────────────┬──────────────────────────────────┘  │
+│                                  │                                     │
+│  ┌───────────────────────────────▼──────────────────────────────────┐  │
+│  │ 2. AWS Lambda Claims REST API Invoker                            │  │
+│  │    (Sends 150-record JSON payload, gets Control No, SSN, Claim ID)│  │
+│  │    (Persists Partial Success / Error Responses to S3 Response dir)│  │
+│  └───────────────────────────────┬──────────────────────────────────┘  │
+│                                  │                                     │
+│  ┌───────────────────────────────▼──────────────────────────────────┐  │
+│  │ 3. PySpark Claim Creation &amp; Db2 Stored Procedure Glue Job        │  │
+│  │    (Executes Db2 Stored Procedures via JDBC + Updates Aurora DB) │  │
+│  │    (Moves Stage records -&gt; History tables)                       │  │
+│  └──────────────────────────────────────────────────────────────────┘  │
+└────────────────────────────┬───────────────────────────────────────────┘
+                             │
+            ┌────────────────┴────────────────┐
+            ▼                                 ▼
+┌───────────────────────────┐    ┌───────────────────────────┐
+│ AWS Bedrock AI Diagnostics│    │ Flyway + GitHub Actions   │
+│ (Parses failure logs &amp;    │    │ (Automated DDL deployment │
+│  sends SNS alerts)        │    │  to Dev &amp; QA DBs)         │
+└───────────────────────────┘    └───────────────────────────┘
+    </pre>
+
+    <h2>2. S3 Directory Layout &amp; FMH Transfer Integration</h2>
+    <p>The <strong>FMH (File Management Handler)</strong> team pushes daily insurance vendor feeds via SFTP using <strong>AWS Transfer Family</strong> directly into our S3 buckets:</p>
+    <pre>
+s3://prudential-data-lake-prod/
+├── configs/          <-- JSON mapping configurations
+├── vendor_a/
+│   ├── inbound/     <-- FMH deposits files here (CSV, XLSX, ZIP, DAT)
+│   ├── source/      <-- PySpark script moves files here for processing
+│   ├── batch_req/   <-- 150-record JSON API request payloads
+│   ├── batch_resp/  <-- Lambda writes API JSON responses here
+│   ├── archive/     <-- Processed files
+│   └── error/       <-- Failed files
+    </pre>
+
+    <h2>3. Dynamic PySpark Ingestion Engine</h2>
+    <p>Ingestion logic is completely parameter-driven. Vendor schemas, delimiters, and target tables are defined in JSON configs in S3:</p>
+    <pre><code>// Example JSON Config (configs/vendor_a_claims_config.json)
+{
+  "vendor_id": "VENDOR_A",
+  "process_type": "disability_claims",
+  "source_file_pattern": "claims_*.csv",
+  "delimiter": ",",
+  "has_header": true,
+  "stage_table": "STG_DISABILITY_CLAIMS",
+  "columns": [
+    {"source_name": "policy_no", "target_name": "POLICY_NO", "type": "string"},
+    {"source_name": "ssn_num", "target_name": "SSN", "type": "string"},
+    {"source_name": "inc_dt", "target_name": "INCURRAL_DATE", "type": "date", "format": "yyyy-MM-dd"},
+    {"source_name": "claim_amt", "target_name": "CLAIM_AMOUNT", "type": "double"}
+  ]
+}</code></pre>
+
+    <h2>4. Step Functions, 150-Record Batching &amp; REST API</h2>
+    <ul>
+      <li><strong>Glue Batch Generator:</strong> Reads staged records and chunks them into JSON files containing <strong>150 records per batch</strong> written to <code>s3://.../batch_req/</code>.</li>
+      <li><strong>Lambda API Invoker:</strong> Reads the 150-record JSON payload from S3, retrieves Auth Token from <strong>AWS Secrets Manager</strong>, and calls the Claims REST API.</li>
+      <li><strong>Partial-Success Handling:</strong> Lambda parses API responses per claim. Valid claims (returning <code>Control Number</code> & <code>Claim ID</code>) and failed claims are separated and persisted to <code>s3://.../batch_resp/</code>.</li>
+      <li><strong>Db2 / Aurora Glue Job:</strong> Reads response JSONs, executes <strong>IBM Db2 Stored Procedures</strong> via JDBC, updates Aurora tables, and moves stage records to <code>history</code> tables to ensure <strong>idempotency</strong>.</li>
+    </ul>
+
+    <h2>5. Flyway &amp; GitHub Actions CI/CD Pipeline</h2>
+    <p>Database table DDL and stored procedure updates are version-controlled in a <strong>Flyway repository</strong>:</p>
+    <ul>
+      <li>Pushing/merging to <code>feature</code> branch triggers GitHub Actions to run <code>flyway migrate</code> against <strong>Dev Aurora/Db2</strong>.</li>
+      <li>Merging to <code>sandbox</code> branch triggers GitHub Actions to run <code>flyway migrate</code> against <strong>QA Aurora/Db2</strong>.</li>
+    </ul>
+
+    <h2>6. GenAI Implementation (AWS Bedrock + Lambda)</h2>
+    <h3>1. AI Failure Log Diagnostic Utility</h3>
+    <p>When a Glue job or Step Function fails, EventBridge invokes a Lambda function that extracts the CloudWatch log stream and passes it to <strong>AWS Bedrock (Claude 3 model)</strong>.</p>
+    <blockquote>
+      🚨 <strong>Sample SNS Alert Output:</strong><br>
+      • <strong>Root Cause:</strong> <code>SchemaMismatchException</code> — Column <code>incurral_date</code> format expected YYYY-MM-DD but received MM/DD/YYYY.<br>
+      • <strong>Affected Source:</strong> <code>s3://prudential-data-lake-prod/vendor_a/inbound/claims_20260924.csv</code><br>
+      • <strong>Recommended Fix:</strong> Update JSON mapping config for Vendor A or request vendor re-format.
+    </blockquote>
+
+    <h3>2. LLM-Assisted Schema Parser Utility</h3>
+    <p>Bedrock inspects raw incoming vendor file headers (CSV/XLSX) in S3 and auto-suggests candidate JSON mapping configs for developer PR review, reducing vendor onboarding time from hours to seconds.</p>
+
+    <h2>7. PySpark Performance Optimization Deep Dive</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Optimization</th>
+          <th>Before</th>
+          <th>After</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Broadcast Join</strong></td>
+          <td>Shuffle Join on Vendor Code table</td>
+          <td><code>broadcast(df_lookup)</code></td>
+          <td>Eliminated network shuffle across 50 nodes</td>
+        </tr>
+        <tr>
+          <td><strong>S3 File Coalesce</strong></td>
+          <td>200 small output files per run</td>
+          <td><code>coalesce(4).write.parquet()</code></td>
+          <td>Resolved Small File Problem &amp; reduced S3 API costs</td>
+        </tr>
+        <tr>
+          <td><strong>Partition Pruning</strong></td>
+          <td>Full S3 scan</td>
+          <td>Partitioned by <code>year/month/day</code></td>
+          <td>Reduced Glue scanned volume by 85%</td>
+        </tr>
+        <tr>
+          <td><strong>Total Runtime</strong></td>
+          <td><strong>30 Minutes</strong></td>
+          <td><strong>5–6 Minutes</strong></td>
+          <td><strong>~80% Runtime Reduction &amp; DPU Savings</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>8. Key Interview Q&amp;A for Technical Cross-Examination</h2>
+    <div class="qa-card">
+      <div class="qa-q">Q1: How do you handle file arrival from the FMH team?</div>
+      <div class="qa-a">The FMH team runs daily on-premise scheduled jobs pushing files into <code>s3://.../inbound/</code> using SFTP via AWS Transfer Family. CloudWatch EventBridge or AutoSys cron triggers our parameterized PySpark Glue jobs, passing <code>vendor_id</code> and <code>process_type</code>.</div>
+    </div>
+    <div class="qa-card">
+      <div class="qa-q">Q2: Why did you use 150-record batching for REST API calls?</div>
+      <div class="qa-a">Calling the Claims API for 100,000 records individually caused severe network latency and rate limiting, while sending all 100,000 records in one payload exceeded HTTP payload size and timeout limits. 150 records per batch was the sweet spot for throughput and stability.</div>
+    </div>
+    <div class="qa-card">
+      <div class="qa-q">Q3: How does Flyway + GitHub Actions manage database deployments across Dev & QA?</div>
+      <div class="qa-a">DDL scripts are version-controlled in Flyway (`V1.x__...sql`). Merging to `feature` branch triggers GitHub Actions to execute Flyway migrations on the Dev database, while merging to `sandbox` branch deploys Flyway migrations to QA.</div>
+    </div>
+    <div class="qa-card">
+      <div class="qa-q">Q4: How does your AWS Bedrock AI Log Diagnostic work?</div>
+      <div class="qa-a">When a Glue job fails, EventBridge triggers a Lambda that fetches the CloudWatch stack trace, passes it to AWS Bedrock (Claude 3) with a specialized system prompt, and Bedrock generates a 3-bullet diagnosis (Root Cause, Affected File, Recommended Fix) sent via SNS to engineers.</div>
+    </div>
+
+  </div>
+</body>
+</html>

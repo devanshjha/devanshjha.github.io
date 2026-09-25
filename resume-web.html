@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Devansh Jha — Professional Web Resume</title>
+  <meta name="description" content="Web Resume of Devansh Jha - Data Engineer & Programmer Analyst at Cognizant (Prudential Financial).">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-black: #000000;
+      --bg-card: #161618;
+      --bg-card-hover: #222225;
+      --bg-nav: rgba(0, 0, 0, 0.85);
+      --border-color: rgba(255, 255, 255, 0.12);
+      --text-primary: #f5f5f7;
+      --text-secondary: #86868b;
+      --accent-blue: #2997ff;
+      --accent-cyan: #64ccc5;
+      --accent-purple: #bf5af2;
+      --accent-green: #30d158;
+      --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", sans-serif;
+      --font-code: "SF Mono", "JetBrains Mono", monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      background-color: var(--bg-black);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Nav Bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 56px;
+      background: var(--bg-nav);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar-container {
+      width: 92%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-btn {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 980px;
+      transition: all 0.3s ease;
+    }
+
+    .brand-btn:hover {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    .print-btn {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: rgba(41, 151, 255, 0.12);
+      border: 1px solid rgba(41, 151, 255, 0.3);
+      padding: 6px 16px;
+      border-radius: 980px;
+      transition: all 0.3s ease;
+    }
+
+    .print-btn:hover {
+      background: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* Main Resume Wrapper */
+    .resume-wrapper {
+      padding-top: 100px;
+      padding-bottom: 80px;
+      width: 92%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .resume-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .resume-header {
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 30px;
+      margin-bottom: 35px;
+    }
+
+    .resume-name {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 50%, #2997ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .resume-title-badge {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      background: rgba(41, 151, 255, 0.12);
+      border: 1px solid rgba(41, 151, 255, 0.3);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-row a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-row a:hover {
+      color: var(--accent-blue);
+    }
+
+    .section-head {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-top: 35px;
+      margin-bottom: 18px;
+    }
+
+    .summary-p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .skill-item {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .skill-item strong {
+      color: var(--text-primary);
+    }
+
+    .exp-company {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 20px;
+    }
+
+    .exp-role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+
+    .role-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .role-date {
+      font-family: var(--font-code);
+      font-size: 0.85rem;
+      color: var(--accent-purple);
+      background: rgba(191, 90, 242, 0.12);
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+
+    .exp-client {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .bullets {
+      list-style: none;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    .bullets li {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+
+    .bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-size: 1.2rem;
+    }
+
+    .proj-item {
+      margin-bottom: 22px;
+    }
+
+    .proj-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .proj-tech {
+      font-family: var(--font-code);
+      font-size: 0.82rem;
+      color: var(--accent-purple);
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .edu-title { font-weight: 700; font-size: 1.05rem; color: var(--text-primary); }
+    .edu-inst { color: var(--text-secondary); font-size: 0.95rem; }
+    .edu-meta { color: var(--accent-green); font-size: 0.9rem; font-weight: 600; }
+
+    .cert-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .cert-list li {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .cert-list li strong { color: var(--text-primary); }
+
+    /* Print Styles */
+    @media print {
+      .top-bar { display: none; }
+      body { background: #fff; color: #000; }
+      .resume-wrapper { padding: 0; width: 100%; }
+      .resume-card { background: #fff; border: none; box-shadow: none; padding: 0; }
+      .resume-name { -webkit-text-fill-color: #000; color: #000; }
+      .section-head { color: #000; border-bottom-color: #000; }
+      .bullets li::before { color: #000; }
+      p, li, span, div { color: #000 !important; }
+    }
+
+    @media (max-width: 640px) {
+      .resume-card { padding: 24px 18px; border-radius: 16px; }
+      .contact-row { flex-direction: column; align-items: center; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Translucent Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <a href="index.html" class="brand-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <button onclick="window.print()" class="print-btn">
+        <i class="fa-solid fa-print"></i> Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="resume-wrapper">
+    <div class="resume-card">
+      
+      <!-- Resume Header -->
+      <div class="resume-header">
+        <h1 class="resume-name">DEVANSH JHA</h1>
+        <div class="resume-title-badge">Data Engineer | Programmer Analyst at Cognizant</div>
+        
+        <div class="contact-row">
+          <span><i class="fa-solid fa-phone"></i> +91 70240-45911</span>
+          <a href="mailto:devanshjha009@gmail.com"><i class="fa-solid fa-envelope"></i> devanshjha009@gmail.com</a>
+          <a href="https://www.linkedin.com/in/devansh-jha-8384a8204/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="section-head">Executive Summary</div>
+      <p class="summary-p">
+        Data Engineer with 3 years modernizing legacy ETL into production AWS pipelines, specializing in PySpark, AWS Glue, Step Functions, and Gen AI integration. Build config-driven, multi-format ingestion frameworks, LLM-assisted schema mapping tools, and Step Function–orchestrated workflows that move data from S3 into Db2/Aurora — handling dynamic schemas, API/JSON payload integration, and end-to-end validation. Own the full delivery lifecycle: script development, framework optimization, AI-driven log diagnostics (AWS Bedrock), stored-procedure rework, and automated CI/CD deployment via GitHub Actions &amp; Jenkins.
+      </p>
+
+      <!-- Skills -->
+      <div class="section-head">Technical Skills</div>
+      <div class="skill-item"><strong>Cloud &amp; Big Data:</strong> AWS (Glue, S3, Lambda, Secrets Manager, Aurora, RDS, SNS, Bedrock), Apache Spark (PySpark, Spark SQL)</div>
+      <div class="skill-item"><strong>AI &amp; Gen AI Integration:</strong> AWS Bedrock (Claude 3), RAG, Prompt Engineering, LangChain, LLM API Integration, AI Log Diagnostics</div>
+      <div class="skill-item"><strong>ETL &amp; Data Engineering:</strong> ETL Pipeline Development, Config-Driven Ingestion, Data Transformation, Data Validation, Schema Mapping, Batch Processing</div>
+      <div class="skill-item"><strong>Languages &amp; Databases:</strong> Python, SQL, IBM Db2, AWS Aurora, PostgreSQL</div>
+      <div class="skill-item"><strong>APIs &amp; Integration:</strong> REST API integration, JSON request/response generation, payload mapping &amp; validation</div>
+      <div class="skill-item"><strong>DevOps &amp; CI/CD:</strong> GitHub Actions, Jenkins, Flyway SQL, CloudWatch, AutoSys, Git</div>
+
+      <!-- Experience -->
+      <div class="section-head">Work Experience</div>
+      <div class="exp-company">Cognizant Technology Solutions — Noida, UP</div>
+      
+      <div class="exp-role-row">
+        <span class="role-title">Programmer Analyst</span>
+        <span class="role-date">Sept 2024 – Present</span>
+      </div>
+      <div class="exp-role-row">
+        <span class="role-title">Programmer Analyst Trainee</span>
+        <span class="role-date">Sept 2023 – Sept 2024</span>
+      </div>
+      <div class="exp-client">Client: Prudential Financial (Fortune 500) — Enterprise Data Platform Modernization</div>
+
+      <ul class="bullets">
+        <li>Migrated 4+ business-critical legacy Informatica ETL workloads to AWS-native pipelines (Glue, PySpark, S3, Lambda, Step Functions) as part of a multi-job modernization program relied on by multiple downstream teams.</li>
+        <li>Engineered a config-driven, multi-format ingestion framework (CSV, XLSX, ZIP, DAT) with schema, delimiter, and table mappings externalized to JSON config — enabling onboarding of new vendor feeds without code changes.</li>
+        <li>Developed an LLM-assisted schema mapping utility using AWS Bedrock and Python to analyze dynamic vendor file headers, reducing manual onboarding effort for incoming file feeds.</li>
+        <li>Built an AI-powered pipeline diagnostic framework leveraging AWS Lambda and AWS Bedrock to automatically parse Glue/Step Function failure logs, generate root-cause summaries, and send actionable remediation alerts via SNS.</li>
+        <li>Built a multi-stage, Step Function–orchestrated Glue architecture for automated claim creation — stage load, batch generation (batches of 150), Lambda-based API invocation, and history load — consumed by several internal teams.</li>
+        <li>Integrated the claims REST API via Lambda: generated JSON request payloads from batched records, invoked the API per request, and persisted responses for downstream processing — with partial-success handling to commit only valid API responses.</li>
+        <li>Implemented and provisioned database tables across AWS Aurora cluster and RDS instances in Dev and QA environments using automated GitHub Actions workflows.</li>
+        <li>Developed a comprehensive data validation framework with row-count reconciliation (source vs. target), schema and data-type checks, null/duplicate detection, and checksum-based integrity verification — with automated SNS alerts on validation failures.</li>
+        <li>Optimized PySpark jobs for performance — tuned partitioning and repartitioning strategies, reduced S3 read/write costs, and cut job runtimes from ~30 minutes to 5–6 minutes on high-volume data sets.</li>
+      </ul>
+
+      <!-- Projects -->
+      <div class="section-head">Key Projects</div>
+
+      <div class="proj-item">
+        <div class="proj-title">Enterprise ETL Modernization Pipeline — Informatica $\rightarrow$ AWS Migration</div>
+        <div class="proj-tech">AWS Glue (PySpark), Step Functions, Lambda, Amazon S3, IBM Db2, GitHub Actions</div>
+        <ul class="bullets">
+          <li>Rebuilt legacy Informatica claim-creation flow as a parameterized multi-Glue-job pipeline on AWS.</li>
+          <li>Implemented Step Function orchestration for 150-record batch JSON API payload generation and Lambda invocation.</li>
+        </ul>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-title">AI-Powered Log Diagnostics &amp; Schema Automation Suite</div>
+        <div class="proj-tech">AWS Bedrock (Claude 3), Python, AWS Lambda, Amazon SNS, Amazon S3</div>
+        <ul class="bullets">
+          <li>Intelligent log analysis utility using Lambda and AWS Bedrock to parse PySpark/Glue error tracebacks and send plain-English root-cause diagnoses to engineers via SNS.</li>
+        </ul>
+      </div>
+
+      <!-- Education & Certifications -->
+      <div class="section-head">Education &amp; Certifications</div>
+      
+      <div class="edu-row">
+        <div>
+          <div class="edu-title">Bachelor of Technology (B.Tech)</div>
+          <div class="edu-inst">Institute of Technology &amp; Management, Gwalior</div>
+        </div>
+        <div class="edu-meta">CGPA: 8.49 (2019 – 2023)</div>
+      </div>
+
+      <ul class="cert-list" style="margin-top: 15px;">
+        <li><i class="fa-brands fa-aws" style="color: #ff9900;"></i> <strong>AWS Certified Cloud Practitioner</strong> (2025)</li>
+        <li><i class="fa-brands fa-microsoft" style="color: #00a4ef;"></i> <strong>Microsoft Certified: Azure Fundamentals (AZ-900)</strong> (2025)</li>
+      </ul>
+
+    </div>
+  </div>
+
+</body>
+</html>

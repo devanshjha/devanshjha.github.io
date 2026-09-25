@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devansh Jha – Resume (A3 Format)</title>
+  <style>
+    /* ── Reset & Page Setup for A3 Size ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page {
+      size: A3 portrait;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 9.8pt;
+      line-height: 1.25;
+      color: #000;
+      background: #e0e0e0;
+    }
+
+    .page {
+      width: 11.69in;
+      min-height: 16.54in;
+      margin: 0.15in auto;
+      padding: 0.3in 0.45in 0.3in 0.45in;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    }
+
+    @media print {
+      html, body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .page {
+        width: 11.69in;
+        margin: 0;
+        box-shadow: none;
+        padding: 0.3in 0.45in 0.3in 0.45in;
+      }
+    }
+
+    /* ── Name (h1) ── */
+    h1 {
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18pt;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 2pt;
+    }
+
+    /* ── Contact row ── */
+    .contact {
+      text-align: center;
+      font-size: 9.8pt;
+      margin-bottom: 4pt;
+      color: #000;
+    }
+    .contact a {
+      color: #000;
+      text-decoration: none;
+    }
+    .contact .sep {
+      margin: 0 8px;
+      color: #444;
+    }
+
+    /* ── Section headings (h2) ── */
+    h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11.5pt;
+      font-weight: bold;
+      border-bottom: 1.5px solid #000;
+      padding-bottom: 1.5pt;
+      margin-top: 6pt;
+      margin-bottom: 3pt;
+    }
+
+    /* ── Body text ── */
+    p, li {
+      font-size: 9.8pt;
+      line-height: 1.25;
+      text-align: justify;
+    }
+
+    .summary-text {
+      font-size: 9.8pt;
+      line-height: 1.25;
+      text-align: justify;
+    }
+
+    /* ── Skills ── */
+    .skill-line {
+      font-size: 9.8pt;
+      line-height: 1.28;
+      margin-bottom: 1pt;
+    }
+    .skill-line strong {
+      font-weight: bold;
+    }
+
+    /* ── Work Experience ── */
+    .company-line {
+      font-weight: bold;
+      font-size: 9.8pt;
+      margin-top: 3pt;
+    }
+    .role-line {
+      font-size: 9.8pt;
+      margin-top: 1pt;
+    }
+    .role-title {
+      font-style: italic;
+    }
+    .role-date {
+      font-style: italic;
+      float: right;
+    }
+    .client-line {
+      font-size: 9.8pt;
+      margin-top: 1.5pt;
+      font-style: italic;
+      clear: both;
+    }
+
+    /* ── Bullet lists ── */
+    ul.bullets {
+      list-style: disc;
+      margin-left: 16pt;
+      margin-top: 2pt;
+    }
+    ul.bullets li {
+      margin-bottom: 1pt;
+      padding-left: 1pt;
+    }
+
+    /* ── Projects ── */
+    .project-title {
+      font-weight: bold;
+      font-size: 9.8pt;
+      margin-top: 4pt;
+    }
+    .project-tech {
+      font-size: 9.3pt;
+      font-style: italic;
+      margin-top: 1pt;
+      margin-bottom: 1pt;
+    }
+    .project-arch {
+      font-size: 9.3pt;
+      margin-bottom: 2pt;
+    }
+    .project-arch strong {
+      font-weight: bold;
+    }
+
+    /* ── Education ── */
+    .edu-row {
+      font-size: 12pt;
+      margin-top: 6pt;
+    }
+    .edu-row .right {
+      float: right;
+    }
+    .edu-detail {
+      font-size: 12pt;
+      margin-top: 2pt;
+    }
+    .edu-detail .right {
+      float: right;
+    }
+
+    /* ── Certifications ── */
+    ul.certs {
+      list-style: none;
+      margin-left: 4pt;
+      margin-top: 5pt;
+    }
+    ul.certs li {
+      font-size: 12pt;
+      margin-bottom: 3pt;
+    }
+    ul.certs li::before {
+      content: "* ";
+    }
+
+    /* ── Clearfix ── */
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ═══════════ NAME ═══════════ -->
+    <h1>DEVANSH &nbsp;JHA</h1>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <div class="contact">
+      <span>☎ +91 70240-45911</span>
+      <span class="sep">|</span>
+      <a href="mailto:devanshjha009@gmail.com">✉ devanshjha009@gmail.com</a>
+      <span class="sep">|</span>
+      <a href="https://www.linkedin.com/in/devansh-jha-8384a8204/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align: -2px; margin-right: 4px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Devansh Jha</a>
+    </div>
+
+    <!-- ═══════════ SUMMARY ═══════════ -->
+    <h2>Summary</h2>
+    <p class="summary-text">
+      Data Engineer with 3 years modernizing legacy ETL into production AWS pipelines, specializing in PySpark, AWS Glue,
+      Step Functions, and Gen AI integration. Build config-driven, multi-format ingestion frameworks, LLM-assisted schema mapping tools, and Step Function–orchestrated workflows
+      that move data from S3 into Db2/Aurora — handling dynamic schemas, API/JSON payload integration, and end-to-end
+      validation. Own the full delivery lifecycle: script development, framework optimization, AI-driven log diagnostics (AWS Bedrock), stored-procedure rework, and
+      automated CI/CD deployment via GitHub Actions &amp; Jenkins, with strong production troubleshooting and observability.
+    </p>
+
+    <!-- ═══════════ SKILLS ═══════════ -->
+    <h2>Skills</h2>
+    <p class="skill-line"><strong>Cloud &amp; Big Data:</strong> AWS (Glue, S3, Lambda, Secrets Manager, Aurora, RDS, SNS, Bedrock), Apache Spark (PySpark, Spark SQL)</p>
+    <p class="skill-line"><strong>AI &amp; Gen AI Integration:</strong> AWS Bedrock, RAG (Retrieval-Augmented Generation), Prompt Engineering, LangChain, LLM API Integration, AI Log Diagnostics</p>
+    <p class="skill-line"><strong>ETL &amp; Data Engineering:</strong> ETL Pipeline Development, Config-Driven Ingestion, Data Transformation, Data Validation, Schema Mapping, Batch Processing, Data Lineage</p>
+    <p class="skill-line"><strong>Languages:</strong> Python, SQL</p>
+    <p class="skill-line"><strong>APIs &amp; Integration:</strong> REST API integration, JSON request/response generation, payload mapping &amp; validation</p>
+    <p class="skill-line"><strong>DevOps &amp; CI/CD:</strong> GitHub Actions, Jenkins, AWS CloudFormation, Amazon CloudWatch, AutoSys, Git (GitHub, Bitbucket)</p>
+    <p class="skill-line"><strong>Databases:</strong> IBM Db2, AWS Aurora, AWS RDS</p>
+
+    <!-- ═══════════ WORK EXPERIENCE ═══════════ -->
+    <h2>Work Experience</h2>
+
+    <div class="company-line">Cognizant Technology Solutions — Noida, Uttar Pradesh</div>
+
+    <div class="role-line clearfix">
+      <span class="role-date">(Sept 2024 – Present)</span>
+      <span class="role-title">Programmer Analyst</span>
+    </div>
+    <div class="role-line clearfix">
+      <span class="role-date">(Sept 2023 – Sept 2024)</span>
+      <span class="role-title">Programmer Analyst Trainee</span>
+    </div>
+
+    <div class="client-line">Client: Prudential Financial (Fortune 500) — Enterprise Data Platform Modernization</div>
+
+    <ul class="bullets">
+      <li>Migrated 4+ business-critical legacy Informatica ETL workloads to AWS-native pipelines (Glue, PySpark, S3, Lambda, Step Functions) as part of a multi-job modernization program relied on by multiple downstream teams.</li>
+      <li>Engineered a config-driven, multi-format ingestion framework (CSV, XLSX, ZIP, DAT) with schema, delimiter, and table mappings externalized to JSON config — enabling onboarding of new vendor feeds without code changes.</li>
+      <li>Developed an LLM-assisted schema mapping utility using AWS Bedrock and Python to analyze dynamic vendor file headers, reducing manual onboarding effort for incoming file feeds.</li>
+      <li>Built an AI-powered pipeline diagnostic framework leveraging AWS Lambda and AWS Bedrock to automatically parse Glue/Step Function failure logs, generate root-cause summaries, and send actionable remediation alerts via SNS.</li>
+      <li>Built a multi-stage, Step Function–orchestrated Glue architecture for automated claim creation — stage load, batch generation (batches of 150), Lambda-based API invocation, and history load — consumed by several internal teams.</li>
+      <li>Integrated the claims REST API via Lambda: generated JSON request payloads from batched records, invoked the API per request, and persisted responses for downstream processing — with partial-success handling to commit only valid API responses.</li>
+      <li>Implemented and provisioned database tables across AWS Aurora cluster and RDS instances in Dev and QA environments using automated GitHub Actions workflows.</li>
+      <li>Developed a comprehensive data validation framework with row-count reconciliation (source vs. target), schema and data-type checks, null/duplicate detection, and checksum-based integrity verification — with automated SNS alerts on validation failures.</li>
+      <li>Optimized PySpark jobs for performance — tuned partitioning and repartitioning strategies, reduced S3 read/write costs, and cut job runtimes from ~30 minutes to 5–6 minutes on high-volume data sets.</li>
+      <li>Built Python automation scripts for scheduled file movement, S3 cleanup, monitoring alerts, and data extraction reporting — orchestrated via AutoSys and CloudWatch Events for hands-free operation.</li>
+      <li>Reworked IBM Db2 stored procedures to execute directly from AWS Glue jobs (replacing legacy Informatica invocation), diagnosed and resolved procedure-level failures to ensure correct claim processing on AWS.</li>
+      <li>Owned CI/CD delivery across GitHub Actions, Jenkins, and CloudBees, led source-control migration from Bitbucket to GitHub, enabling automated, merge-based deployments per environment.</li>
+      <li>Managed production incident response and on-call support — triaged pipeline failures, performed root-cause analysis, and deployed hotfixes with zero data loss using CI/CD with no disruption.</li>
+      <li>Mentored junior engineers on PySpark best practices, AWS Glue job design, and CI/CD workflows, accelerating their ramp-up and enabling independent delivery.</li>
+    </ul>
+
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <h2>Projects</h2>
+
+    <div class="project-title">Enterprise ETL Modernization Pipeline — Informatica → AWS Migration</div>
+    <div class="project-tech">AWS Glue (PySpark), Step Functions, Lambda, Amazon S3, IBM Db2, Jenkins/CloudBees, GitHub</div>
+    <p class="project-arch"><strong>Architecture:</strong> S3 (multi-vendor inbound) → Glue stage load → Step Functions → Glue batch generation → Lambda (claims API) → Glue claim creation → Db2 (stored procedures) → history load</p>
+
+    <ul class="bullets">
+      <li>Rebuilt a legacy Informatica claim-creation flow as a parameterized, multi-Glue-job pipeline on AWS, depended on by multiple internal teams.</li>
+      <li>Designed parameter-driven execution (category + process type) with JSON-configured extraction, delimiters, and filters — handling CSV, XLSX, ZIP, and DAT inputs across multiple vendor feeds.</li>
+      <li>Implemented Step Function orchestration for batch processing (groups of 150) with JSON API payload generation, Lambda-based API invocation, and partial-success semantics for mixed API outcomes.</li>
+      <li>Delivered a four-stage SNS notification model (initiation, failure, partial success, completion) for proactive pipeline monitoring.</li>
+    </ul>
+
+    <div class="project-title">AI-Powered Log Diagnostics &amp; Schema Automation Suite</div>
+    <div class="project-tech">AWS Bedrock, Python, AWS Lambda, LangChain, Amazon SNS, Amazon S3</div>
+
+    <ul class="bullets">
+      <li>Created an intelligent log analysis utility using Lambda and AWS Bedrock (Claude model) to parse PySpark/Glue error tracebacks and send plain-English root-cause diagnoses to engineers via SNS.</li>
+      <li>Implemented an automated LLM schema parser to inspect incoming vendor headers (CSV/XLSX) and generate formatted JSON extraction configurations, speeding up onboarding of complex feed layouts.</li>
+    </ul>
+
+    <div class="project-title">Data Validation &amp; Reconciliation Framework</div>
+    <div class="project-tech">PySpark, AWS Glue, Amazon S3, Amazon SNS, Python</div>
+
+    <ul class="bullets">
+      <li>Designed and built a reusable data quality framework to validate migrated ETL outputs against legacy source systems across all modernized pipelines.</li>
+      <li>Implemented row-count reconciliation (source vs. target), schema and data-type validation, null/duplicate detection, and checksum-based integrity checks — catching data discrepancies before downstream consumption.</li>
+      <li>Integrated automated SNS alerting on validation failures, reducing manual QA effort and enabling faster incident response for production data issues.</li>
+    </ul>
+
+    <div class="project-title">Production Automation &amp; Monitoring Toolkit</div>
+    <div class="project-tech">Python, AWS CloudWatch, AutoSys, Amazon S3, Amazon SNS</div>
+
+    <ul class="bullets">
+      <li>Built a suite of Python scripts automating file movement, S3 cleanup, and data extraction reporting — replacing manual, error-prone operational tasks.</li>
+      <li>Configured CloudWatch Events and AutoSys schedules for hands-free execution of recurring jobs, monitoring scripts, and alerting workflows.</li>
+      <li>Reduced operational overhead by automating routine production tasks, freeing engineering time for feature development and migration work.</li>
+    </ul>
+
+    <!-- ═══════════ EDUCATION ═══════════ -->
+    <h2>Education</h2>
+
+    <div class="edu-row clearfix">
+      <span class="right">Aug 2019 – Jun 2023</span>
+      <strong>Bachelor of Technology</strong>
+    </div>
+    <div class="edu-detail clearfix">
+      <span class="right">Gwalior, Madhya Pradesh</span>
+      <span>Institute of Technology &amp; Management Gwalior — CGPA: 8.49</span>
+    </div>
+
+    <!-- ═══════════ CERTIFICATIONS ═══════════ -->
+    <h2>Certifications</h2>
+    <ul class="certs">
+      <li>Microsoft Certified: Azure Fundamentals AZ-900 (2025)</li>
+      <li>AWS Certified Cloud Practitioner (2025)</li>
+    </ul>
+
+  </div><!-- /page -->
+</body>
+</html>
